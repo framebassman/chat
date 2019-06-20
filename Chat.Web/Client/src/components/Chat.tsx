@@ -23,7 +23,7 @@ export class Chat extends Component<any, any> {
       };
     
     componentDidMount = () => {
-        const nick = window.prompt('Your name:', 'John');
+        const nick = window.prompt('Your name:', 'Annonimus');
         const hubConnection = new signalR.HubConnectionBuilder()
             .withUrl("/signalr")
             .build();
@@ -45,19 +45,19 @@ export class Chat extends Component<any, any> {
     render() {
         return (
           <div>
-            <br />
-            <input
-              type="text"
-              value={this.state.message}
-              onChange={e => this.setState({ message: e.target.value })}
-            />
-      
-            <button onClick={this.sendMessage}>Send</button>
-      
             <div>
               {this.state.messages.map((message: string, index: number) => (
                 <span style={{display: 'block'}} key={index}> {message} </span>
               ))}
+            </div>
+            
+            <div>
+              <input
+                type="text"
+                value={this.state.message}
+                onChange={e => this.setState({ message: e.target.value })}
+              />
+              <button onClick={this.sendMessage}>Send</button>
             </div>
           </div>
         );
