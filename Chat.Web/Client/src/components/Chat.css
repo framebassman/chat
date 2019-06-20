@@ -10,7 +10,7 @@
 
 .messages {
   margin: 4px;
-  height: 85vh;
+  height: 80vh;
   overflow-y: scroll;
 }
 
@@ -21,4 +21,14 @@
 
 .input {
   width: 700px;
+}
+
+@media (max-width: 800px) {
+  .paper {
+    max-width: 300px;
+  }
+
+  .input {
+    width: 250px;
+  }
 }
