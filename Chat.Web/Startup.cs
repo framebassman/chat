@@ -43,6 +43,7 @@ namespace Chat.Web
             }
             app.UseSignalR(routes =>
             {
+//                routes.MapHub<ChatHub>("/signalr");
                 routes.MapHub<ChatHub>("/signalr");
             });
             
