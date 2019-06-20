@@ -51,14 +51,14 @@ export class Chat extends Component<any, any> {
               ))}
             </div>
             
-            <div>
+            <form action="javascript:void(0);">
               <input
                 type="text"
                 value={this.state.message}
                 onChange={e => this.setState({ message: e.target.value })}
               />
-              <button onClick={this.sendMessage}>Send</button>
-            </div>
+              <button onClick={this.sendMessage} type="submit">Send</button>
+            </form>
           </div>
         );
       }
