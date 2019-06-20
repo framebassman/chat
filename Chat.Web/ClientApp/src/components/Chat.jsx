@@ -13,6 +13,15 @@ class Chat extends Component {
         hubConnection: null,
       };
     }
+
+    sendMessage = () => {
+        this.state.hubConnection
+        //   .invoke('sendToAll', this.state.nick, this.state.message)
+          .invoke("SendMessage", this.state.nick, this.state.message)
+          .catch(err => console.error(err));
+      
+          this.setState({message: ''});      
+      };
     
     componentDidMount = () => {
         const nick = window.prompt('Your name:', 'John');
@@ -35,8 +44,25 @@ class Chat extends Component {
     }
 
     render() {
-      return <div>Here goes chat</div>;
-    }
+        return (
+          <div>
+            <br />
+            <input
+              type="text"
+              value={this.state.message}
+              onChange={e => this.setState({ message: e.target.value })}
+            />
+      
+            <button onClick={this.sendMessage}>Send</button>
+      
+            <div>
+              {this.state.messages.map((message, index) => (
+                <span style={{display: 'block'}} key={index}> {message} </span>
+              ))}
+            </div>
+          </div>
+        );
+      }
   }
   
   export default Chat;
