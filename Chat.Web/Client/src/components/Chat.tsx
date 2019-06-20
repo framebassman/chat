@@ -2,8 +2,8 @@ import React from 'react';
 import {Component} from 'react';
 import * as signalR from "@aspnet/signalr";
 
-class Chat extends Component {
-    constructor(props) {
+export class Chat extends Component<any, any> {
+    constructor(props: any) {
       super(props);
       
       this.state = {
@@ -16,9 +16,8 @@ class Chat extends Component {
 
     sendMessage = () => {
         this.state.hubConnection
-        //   .invoke('sendToAll', this.state.nick, this.state.message)
           .invoke("newMessage", this.state.nick, this.state.message)
-          .catch(err => console.error(err));
+          .catch((err: any) => console.error(err));
       
           this.setState({message: ''});      
       };
@@ -26,16 +25,16 @@ class Chat extends Component {
     componentDidMount = () => {
         const nick = window.prompt('Your name:', 'John');
         const hubConnection = new signalR.HubConnectionBuilder()
-            .withUrl("/signalr", { useDefaultPath: false })
+            .withUrl("/signalr")
             .build();
     
         this.setState({ hubConnection, nick }, () => {
             this.state.hubConnection
               .start()
               .then(() => console.log('Connection started!'))
-              .catch(err => console.log('Error while establishing connection :('));
+              .catch((err: any) => console.log('Error while establishing connection :('));
       
-            this.state.hubConnection.on('ReceiveMessage', (nick, receivedMessage) => {
+            this.state.hubConnection.on('ReceiveMessage', (nick: string, receivedMessage: string) => {
               const text = `${nick}: ${receivedMessage}`;
               const messages = this.state.messages.concat([text]);
               this.setState({ messages });
@@ -56,7 +55,7 @@ class Chat extends Component {
             <button onClick={this.sendMessage}>Send</button>
       
             <div>
-              {this.state.messages.map((message, index) => (
+              {this.state.messages.map((message: string, index: number) => (
                 <span style={{display: 'block'}} key={index}> {message} </span>
               ))}
             </div>
@@ -64,5 +63,3 @@ class Chat extends Component {
         );
       }
   }
-  
-  export default Chat;
