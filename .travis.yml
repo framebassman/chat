@@ -23,6 +23,7 @@ jobs:
         - npm test
 
     - stage: Deploy
+      language: minimal
       services:
         - docker
       env:
@@ -30,7 +31,7 @@ jobs:
       script:
         - docker build --file ./Dockerfile . --tag framebassman/izzy:$RELEASE_NUMBER
         - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker push framebassman/izzy
+        - docker push framebassman/chat
       before_deploy:
         - git config --local user.name $GIT_USERNAME
         - git config --local user.email $GIT_EMAIL
