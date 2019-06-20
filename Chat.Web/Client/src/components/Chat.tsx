@@ -1,6 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
 import * as signalR from "@aspnet/signalr";
+import './Chat.css';
 
 export class Chat extends Component<any, any> {
     constructor(props: any) {
@@ -44,8 +45,8 @@ export class Chat extends Component<any, any> {
 
     render() {
         return (
-          <div>
-            <div>
+          <div className="chat">
+            <div className="messages">
               {this.state.messages.map((message: string, index: number) => (
                 <span style={{display: 'block'}} key={index}> {message} </span>
               ))}
