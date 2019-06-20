@@ -1,6 +1,9 @@
 import React from 'react';
 import {Component} from 'react';
 import * as signalR from "@aspnet/signalr";
+import Paper from '@material-ui/core/Paper';
+import Divider from '@material-ui/core/Divider';
+import TextField from '@material-ui/core/TextField';
 import './Chat.css';
 
 export class Chat extends Component<any, any> {
@@ -46,20 +49,26 @@ export class Chat extends Component<any, any> {
     render() {
         return (
           <div className="chat">
-            <div className="messages">
-              {this.state.messages.map((message: string, index: number) => (
-                <span style={{display: 'block'}} key={index}> {message} </span>
-              ))}
-            </div>
-            
-            <form action="javascript:void(0);">
-              <input
-                type="text"
-                value={this.state.message}
-                onChange={e => this.setState({ message: e.target.value })}
-              />
-              <button onClick={this.sendMessage} type="submit">Send</button>
-            </form>
+            <Paper className="paper">
+              <div className="messages">
+                {this.state.messages.map((message: string, index: number) => (
+                  <span style={{display: 'block'}} key={index}> {message} </span>
+                ))}
+              </div>
+              <Divider />
+              <form className="form" action="javascript:void(0);">
+                <TextField
+                  className="input"
+                  type="text"
+                  placeholder="Напишите сообщение..."
+                  variant="outlined"
+                  margin="normal"
+                  value={this.state.message}
+                  onChange={e => this.setState({ message: e.target.value })}
+                />
+                <button onClick={this.sendMessage} type="submit" style={{display: 'none'}}/>
+              </form>
+            </Paper>
           </div>
         );
       }
