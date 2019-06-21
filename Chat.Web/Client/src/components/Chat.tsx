@@ -29,7 +29,7 @@ export class Chat extends Component<any, any> {
     componentDidMount = () => {
         const nick = window.prompt('Your name:', 'Annonimus');
         const hubConnection = new signalR.HubConnectionBuilder()
-            .withUrl("signalr")
+            .withUrl("/chat/signalr")
             .build();
     
         this.setState({ hubConnection, nick }, () => {
