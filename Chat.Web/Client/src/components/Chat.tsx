@@ -67,7 +67,7 @@ export class Chat extends Component<any, any> {
                   value={this.state.message}
                   onChange={e => this.setState({ message: e.target.value })}
                 />
-                <button onClick={this.sendMessage} type="submit" style={{display: 'none'}}/>
+                <button className="submit-button" onClick={this.sendMessage} type="submit"/>
               </form>
             </Paper>
           </div>

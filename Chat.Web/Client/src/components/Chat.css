@@ -23,6 +23,10 @@
   width: 700px;
 }
 
+.submit-button {
+  display: none;
+}
+
 @media (max-width: 800px) {
   .paper {
     max-width: 300px;
