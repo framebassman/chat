@@ -2,10 +2,11 @@
   "name": "chat",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://romashov.tech/chat",
+  "homepage": "https://romashov.tech/chat",
   "dependencies": {
     "@aspnet/signalr": "^1.1.4",
     "@material-ui/core": "^4.0.0-rc.0",
+    "@sentry/browser": "^5.4.3",
     "@types/jest": "24.0.15",
     "@types/node": "12.0.8",
     "@types/react": "16.8.21",
@@ -13,6 +14,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
+    "react-yandex-metrika": "^2.5.1",
     "typescript": "^3.4.5"
   },
   "devDependencies": {
