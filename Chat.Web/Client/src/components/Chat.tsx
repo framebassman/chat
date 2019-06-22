@@ -56,7 +56,7 @@ export class Chat extends Component<any, any> {
                 ))}
               </div>
               <Divider />
-              // eslint-disable-next-line
+              {/* eslint-disable-next-line */}
               <form className="form" action="javascript:void(0);">
                 <TextField
                   className="input"
