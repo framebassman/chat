@@ -1,6 +1,7 @@
 import React from 'react';
 import {Component} from 'react';
-import * as signalR from "@aspnet/signalr";
+import { ChatState } from './ChatState';
+import { sendMessageCommand, chatHubConnection } from '../model/SignalR';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
@@ -10,27 +11,26 @@ export class Chat extends Component<any, any> {
     constructor(props: any) {
       super(props);
       
-      this.state = {
+      const initState: ChatState = {
         nick: '',
         message: '',
         messages: [],
-        hubConnection: null,
+        hubConnection: chatHubConnection,
       };
+      this.state = initState;
     }
 
     sendMessage = () => {
         this.state.hubConnection
-          .invoke("newMessage", this.state.nick, this.state.message)
+          .invoke(sendMessageCommand, this.state.nick, this.state.message)
           .catch((err: any) => console.error(err));
-      
-          this.setState({message: ''});      
+
+          this.setState({message: ''});
       };
     
     componentDidMount = () => {
         const nick = window.prompt('Your name:', 'Annonimus');
-        const hubConnection = new signalR.HubConnectionBuilder()
-            .withUrl("/chat/signalr")
-            .build();
+        const hubConnection = chatHubConnection;
     
         this.setState({ hubConnection, nick }, () => {
             this.state.hubConnection
