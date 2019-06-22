@@ -48,6 +48,7 @@ namespace Chat.Web
                         options.ShutdownTimeout = TimeSpan.FromSeconds(5);
                         options.DecompressionMethods = DecompressionMethods.None;
                         options.MaxRequestBodySize = RequestSize.Always;
+                        options.Release = Environment.GetEnvironmentVariable("SENTRY_RELEASE");
                     }
                 );
 

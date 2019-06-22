@@ -1,7 +1,6 @@
 using Chat.Web.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
@@ -43,20 +42,17 @@ namespace Chat.Web
             }
             app.UseSignalR(routes =>
             {
-//                routes.MapHub<ChatHub>("/signalr");
                 routes.MapHub<ChatHub>("/signalr");
             });
             
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
-
-//            app.UseMvc(routes =>
-//            {
-//                routes.MapRoute(
-//                    name: "default",
-//                    template: "{controller}/{action=Index}/{id?}");
-//            });
-            app.UseMvc();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller}/{action=Index}/{id?}");
+            });
 
             app.UseSpa(spa =>
             {
