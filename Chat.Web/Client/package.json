@@ -6,6 +6,7 @@
   "dependencies": {
     "@aspnet/signalr": "^1.1.4",
     "@material-ui/core": "^4.0.0-rc.0",
+    "@sentry/browser": "^5.4.3",
     "@types/jest": "24.0.15",
     "@types/node": "12.0.8",
     "@types/react": "16.8.21",

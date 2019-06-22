@@ -1,10 +1,6 @@
 import React from 'react';
 import { YMInitializer } from 'react-yandex-metrika';
-
-function isProd(): boolean {
-  return process.env.ASPNETCORE_ENVIRONMENT === 'production'
-    || process.env.NODE_ENV === 'production';
-}
+import { isProd } from './environment';
 
 interface YandexMetricaProps {
   accounts: number[]
