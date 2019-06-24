@@ -5,6 +5,7 @@ import { sendMessageCommand, chatHubConnection } from '../model/SignalR';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
+import { SendButton } from './SendButton';
 import './Chat.css';
 
 export class Chat extends Component<any, any> {
@@ -63,11 +64,13 @@ export class Chat extends Component<any, any> {
                   type="text"
                   placeholder="Напишите сообщение..."
                   variant="outlined"
-                  margin="normal"
+                  margin="dense"
                   value={this.state.message}
                   onChange={e => this.setState({ message: e.target.value })}
                 />
-                <button className="submit-button" onClick={this.sendMessage} type="submit"/>
+                <button className="submit-button" onClick={this.sendMessage} type="submit">
+                  <SendButton />
+                </button>
               </form>
             </Paper>
           </div>

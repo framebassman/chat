@@ -17,6 +17,7 @@
 .form {
   display: flex;
   justify-content: center;
+  margin: 8px;
 }
 
 .input {
@@ -34,5 +35,9 @@
 
   .input {
     width: 250px;
+  }
+
+  .submit-button {
+    display: block;
   }
 }
