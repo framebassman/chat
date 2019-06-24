@@ -11,7 +11,7 @@ Sentry.init({
   dsn: sentry_dns,
   maxBreadcrumbs: 50,
   environment: env(),
-  debug: env() === 'PRODUCTION' ? true : false,
+  debug: env() === 'PRODUCTION' ? false : true,
   release: process.env.SENTRY_RELEASE,
   beforeBreadcrumb(breadcrumb: any, hint: any) {
     if (breadcrumb.category === 'ui.click') {

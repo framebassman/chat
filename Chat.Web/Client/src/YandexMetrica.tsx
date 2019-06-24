@@ -22,6 +22,6 @@ export const YandexMetrica = (props: YandexMetricaProps) => {
       />
     )
   } else {
-    return (<div style={{display: 'none'}} />);
+    return null;
   }
 }

@@ -10,13 +10,14 @@
 
 .messages {
   margin: 4px;
-  height: 80vh;
+  height: 75vh;
   overflow-y: scroll;
 }
 
 .form {
   display: flex;
   justify-content: center;
+  margin: 8px;
 }
 
 .input {
@@ -25,10 +26,10 @@
 
 @media (max-width: 800px) {
   .paper {
-    max-width: 300px;
+    min-width: 300px;
   }
 
   .input {
-    width: 250px;
+    min-width: 250px;
   }
 }
