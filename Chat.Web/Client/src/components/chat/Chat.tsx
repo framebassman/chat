@@ -1,11 +1,11 @@
 import React from 'react';
 import {Component} from 'react';
 import { ChatState } from './ChatState';
-import { sendMessageCommand, chatHubConnection } from '../model/SignalR';
+import { sendMessageCommand, chatHubConnection } from '../../model/SignalR';
 import Paper from '@material-ui/core/Paper';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
-import { SendButton } from './SendButton';
+import { SendButton } from '../send_button/SendButton';
 import './Chat.css';
 
 export class Chat extends Component<any, any> {
@@ -68,9 +68,7 @@ export class Chat extends Component<any, any> {
                   value={this.state.message}
                   onChange={e => this.setState({ message: e.target.value })}
                 />
-                <button className="submit-button" onClick={this.sendMessage} type="submit">
-                  <SendButton />
-                </button>
+                <SendButton onClick={this.sendMessage} type="submit"/>
               </form>
             </Paper>
           </div>
