@@ -10,7 +10,7 @@ jobs:
         - dotnet restore
       script:
         - dotnet build
-        - dotnet test Chat.Web.Tests
+        - dotnet test Chat.Tests
 
     - language: node_js
       node_js:

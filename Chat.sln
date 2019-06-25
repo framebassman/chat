@@ -2,7 +2,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Web", "Chat.Web\Chat.Web.csproj", "{2F45EEA9-091D-48AC-BAF8-8E842145F906}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Web.Tests", "Chat.Web.Tests\Chat.Web.Tests.csproj", "{4076D057-62AD-451E-9029-47700C783A08}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Tests", "Chat.Tests\Chat.Tests.csproj", "{4076D057-62AD-451E-9029-47700C783A08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
