@@ -1,4 +1,5 @@
 using Chat.Web.Model;
+using Chat.Web.Middlewares;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -47,6 +48,7 @@ namespace Chat.Web
             
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+            app.UseMiddleware<HealthCheckMiddleware>();
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
