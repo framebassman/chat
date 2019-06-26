@@ -15,7 +15,7 @@ namespace Chat.Web.Model
 
         public async Task NewMessage(string user, string message)
         {
-            _log.LogInformation($"Send message: {message} to user: {user}");
+            _log.LogInformation("User: {@user} send message: {@message}", user, message);
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
     }
