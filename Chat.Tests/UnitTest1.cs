@@ -16,6 +16,7 @@ namespace Chat.Tests
             new DriverManager().SetUpDriver(new ChromeConfig());
             AtataContext.Configure()
                 .UseChrome()
+                    .WithArguments("--no-sandbox")
                 .UseBaseUrl("localhost:5000")
                 .Build();
         }

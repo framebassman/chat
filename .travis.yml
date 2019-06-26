@@ -5,12 +5,16 @@ jobs:
       dist: xenial
       mono: none
       dotnet: 2.2
+      services:
+        - xvfb
+      addons:
+        chrome: stable
       install: 
         - dotnet clean
         - dotnet restore
       script:
         - dotnet build
-        - dotnet test Chat.Tests
+        - xvfb-run dotnet test Chat.Tests
 
     - language: node_js
       node_js:
