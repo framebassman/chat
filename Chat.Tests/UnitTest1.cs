@@ -17,7 +17,7 @@ namespace Chat.Tests
             AtataContext.Configure()
                 .UseChrome()
                     .WithArguments("--no-sandbox")
-                .UseBaseUrl("localhost:5000")
+                .UseBaseUrl("https://romashov.tech/chat/")
                 .Build();
         }
         
@@ -29,6 +29,8 @@ namespace Chat.Tests
         [Fact]
         public void Test1()
         {
+            Go.To<MainPage>().
+                LoginAs("SomeUser");
         }
     }
 }
