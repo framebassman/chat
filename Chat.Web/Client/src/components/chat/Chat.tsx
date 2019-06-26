@@ -51,15 +51,16 @@ export class Chat extends Component<any, any> {
         return (
           <div className="chat">
             <Paper className="paper">
-              <div className="messages">
+              <div id="messages" className="messages">
                 {this.state.messages.map((message: string, index: number) => (
-                  <span style={{display: 'block'}} key={index}> {message} </span>
+                  <span id="message" style={{display: 'block'}} key={index}> {message} </span>
                 ))}
               </div>
               <Divider />
               {/* eslint-disable-next-line */}
               <form className="form" action="javascript:void(0);">
                 <TextField
+                  id="input"
                   className="input"
                   type="text"
                   placeholder="Напишите сообщение..."
