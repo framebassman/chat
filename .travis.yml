@@ -16,7 +16,7 @@ jobs:
         - dotnet build 
         - dotnet run --project Chat.Web/Chat.Web.csproj &>/dev/null &
         - bash Scripts/wait-until-service-is-up.sh
-        - xvfb-run dotnet test Chat.Tests
+        - DISPLAY=:99 xvfb-run -a -n 1 -l -s "-screen 0, 1920x1080x8" dotnet test Chat.Tests
         - killall dotnet -9
 
     - language: node_js
