@@ -13,12 +13,11 @@ jobs:
         - dotnet clean
         - dotnet restore
       script:
-        - dotnet build
-        - make build 
-        - make start-test
+        - dotnet build 
+        - dotnet run --project Chat.Web/Chat.Web.csproj &>/dev/null &
         - bash Scripts/wait-until-service-is-up.sh
         - xvfb-run dotnet test Chat.Tests
-        - make stop
+        - killall dotnet -9
 
     - language: node_js
       node_js:
