@@ -1,14 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Sentry;
 using Sentry.Extensibility;
 using Serilog;
 using Log = Serilog.Log;
