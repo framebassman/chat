@@ -6,7 +6,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/Chat.Web/bin/Debug/netcoreapp2.2/Chat.Web.dll",
+            "program": "${workspaceFolder}/Chat.Web/bin/Debug/netcoreapp3.1/Chat.Web.dll",
             "args": [],
             "cwd": "${workspaceFolder}/Chat.Web",
             "console": "internalConsole",
