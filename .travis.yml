@@ -25,7 +25,7 @@ jobs:
         - dotnet --version
         - make start-test
         - bash Scripts/wait-until-service-is-up.sh
-        - xvfb-run --auto-servernum --server-num=1 --server-args="-screen 0 1024x768x24" dotnet test Chat.Tests
+        - xvfb-run --auto-servernum --server-num=1 --server-args="-screen 0 1024x768x24" dotnet test Chat.Tests.Integration
 
 #    - language: node_js
 #      node_js:
