@@ -12,6 +12,8 @@ jobs:
 #        - dotnet build 
 
     - stage: test
+      mono: none
+      dotnet: 3.1
       addons:
         chrome: stable
       services:
