@@ -13,10 +13,10 @@ jobs:
 
     - stage: Integration tests
       language: minimal
-      dist: bionic
+      dist: xenial
       services:
         - xvfb
-        - docker
+#        - docker
       addons:
         chrome: stable
       script:
