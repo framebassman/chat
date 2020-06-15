@@ -7,6 +7,7 @@ jobs:
       dotnet: 3.1
       services:
         - xvfb
+        - docker
       addons:
         chrome: stable
       install: 
@@ -14,10 +15,9 @@ jobs:
         - dotnet restore
       script:
         - dotnet build 
-        - dotnet run --project Chat.Web/Chat.Web.csproj &>/dev/null &
+        - make start-test
         - bash Scripts/wait-until-service-is-up.sh
         - xvfb-run --auto-servernum --server-num=1 --server-args="-screen 0 1024x768x24" dotnet test Chat.Tests
-        - killall dotnet -9
 
     - language: node_js
       node_js:
