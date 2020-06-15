@@ -4,7 +4,7 @@ RUN apk add --update 'nodejs=12.15.0-r1' 'npm=12.15.0-r1'
 
 COPY ./Chat.Web /app
 WORKDIR /app
-RUN dotnet clean
+#RUN dotnet clean
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
