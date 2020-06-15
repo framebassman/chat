@@ -5,21 +5,21 @@
   "homepage": "https://romashov.tech/chat",
   "dependencies": {
     "@aspnet/signalr": "^1.1.4",
-    "@material-ui/core": "^4.0.0-rc.0",
-    "@material-ui/icons": "^4.2.0",
-    "@sentry/browser": "^5.4.3",
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "^4.9.1",
+    "@sentry/browser": "^5.17.0",
     "@types/jest": "24.0.15",
     "@types/node": "12.0.8",
     "@types/react": "16.8.21",
     "@types/react-dom": "16.8.4",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1",
-    "react-yandex-metrika": "^2.5.1",
-    "typescript": "^3.4.5"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1",
+    "react-yandex-metrika": "^2.6.0",
+    "typescript": "^3.9.5"
   },
   "devDependencies": {
-    "caniuse-lite": "^1.0.30000974"
+    "caniuse-lite": "^1.0.30001083"
   },
   "scripts": {
     "start": "react-scripts start",
