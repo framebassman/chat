@@ -14,17 +14,15 @@ jobs:
     - stage: Integration tests
       language: minimal
       dist: xenial
+      addons:
+        chrome: "83.0"
       services:
         - xvfb
-        - docker
-      addons:
-        chrome: stable
+      before_script:
+        - export DISPLAY=:99.0
       script:
-        - sudo apt-get update -y
-        - sudo apt-get install -y xserver-common libxfont1 x11-xkb-utils xvfb
         - make start-test
         - bash Scripts/wait-until-service-is-up.sh
-        - xvfb-run --auto-servernum --server-num=1 --server-args="-screen 0 1024x768x24" dotnet test Chat.Tests
 
 #    - language: node_js
 #      node_js:
