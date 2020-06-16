@@ -14,7 +14,7 @@ namespace Chat.Tests.Integration.Tests
             new DriverManager().SetUpDriver(new ChromeConfig());
             AtataContext.Configure()
                 .UseChrome()
-                .UseBaseUrl("http://localhost:5000")
+                .UseBaseUrl("http://localhost/chat")
                 .UseNUnitTestName()
                 .AddNUnitTestContextLogging()
                 .LogNUnitError()
