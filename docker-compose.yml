@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.6'
 
 services:
   web:
@@ -11,3 +11,20 @@ services:
     environment:
       - ASPNETCORE_URLS=http://0.0.0.0:5000
     tty: true
+    labels:
+        - "traefik.enable=true"
+        - "traefik.port=5000"
+        - "traefik.backend=chat"
+        - "traefik.frontend.rule=PathPrefixStrip:/chat"
+        - "traefik.frontend.redirect.regex=^(.*)/chat$$"
+        - "traefik.frontend.redirect.replacement=$$1/chat/"
+        - "traefik.frontend.rule=PathPrefix:/chat;ReplacePathRegex: ^/chat/(.*) /$$1"
+        - "traefik.docker.network=romashovtech_default"
+  proxy:
+    container_name: proxy
+    build:
+        context: ./Proxy
+    ports:
+        - 80:80
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
