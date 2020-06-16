@@ -58,9 +58,12 @@ jobs:
         skip_cleanup: true
 
 stages:
-  - Build
-  - Unit tests
-  - Integration tests
+  - name: Build
+    if: branch != master AND type != pull_request
+  - name: Unit tests
+    if: branch != master AND type != pull_request
+  - name: Integration tests
+    if: type = pull_request
   - name: Deploy
     if: branch = master AND type != pull_request
 branches:
