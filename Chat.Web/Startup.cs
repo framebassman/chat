@@ -21,7 +21,7 @@ namespace Chat.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSignalR();
-
+            services.AddHealthChecks();
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration => { configuration.RootPath = "Client/build"; });
         }
@@ -46,7 +46,7 @@ namespace Chat.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapHub<ChatHub>("/signalr");
-
+                endpoints.MapHealthChecks("/healthcheck");
             });
 
             app.UseSpa(spa =>

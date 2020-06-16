@@ -9,7 +9,7 @@ export const SendButton = (props: any) => {
     color: '#2f74e2'
   };
   return (
-    <Button className="send-button" onClick={onClick} type={type}>
+    <Button id="send" className="send-button" onClick={onClick} type={type}>
       <Send style={iconStyle}/>
     </Button>
   )

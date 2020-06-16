@@ -1,26 +1,41 @@
 jobs:
   include:
-    - stage: Test
+#    - stage: Build
+#      language: csharp
+#      dist: xenial
+#      mono: none
+#      dotnet: 3.1
+#      install: 
+#        - dotnet clean
+#        - dotnet restore
+#      script:
+#        - dotnet build 
+
+    - stage: test
       language: csharp
-      dist: xenial
       mono: none
       dotnet: 3.1
-      install: 
-        - dotnet clean
-        - dotnet restore
+      addons:
+        chrome: stable
+      services:
+        - xvfb
+      before_script:
+        - export DISPLAY=:99.0
       script:
-        - dotnet build
-        - dotnet test Chat.Web.Tests
+        - dotnet --version
+        - make start-test
+        - bash Scripts/wait-until-service-is-up.sh
+        - xvfb-run --auto-servernum --server-num=1 --server-args="-screen 0 1024x768x24" dotnet test Chat.Tests.Integration
 
-    - language: node_js
-      node_js:
-        - 12.15.0
-      before_install:
-        - cd Chat.Web/Client/
-      install:
-        - npm install
-      script:
-        - npm test
+#    - language: node_js
+#      node_js:
+#        - 12.15.0
+#      before_install:
+#        - cd Chat.Web/Client/
+#      install:
+#        - npm install
+#      script:
+#        - npm test
 
     - stage: Deploy
       language: minimal
@@ -50,4 +65,4 @@ branches:
     - /.*/
 notifications:
   email: false
-  slack: kolenkainc:$SLACK_TOKEN
+  slack: $SLACK_TOKEN

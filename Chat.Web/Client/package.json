@@ -2,7 +2,7 @@
   "name": "chat",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://romashov.tech/chat",
+  "homepage": ".",
   "dependencies": {
     "@aspnet/signalr": "^1.1.4",
     "@material-ui/core": "^4.10.2",
