@@ -11,32 +11,32 @@ jobs:
      script:
        - dotnet build 
 
-   - stage: Unit_Tests
-     language: node_js
-     node_js:
-       - 12.15.0
-     before_install:
-       - cd Chat.Web/Client/
-     install:
-       - npm install
-     script:
-       - npm test
+  #  - stage: Unit_Tests
+  #    language: node_js
+  #    node_js:
+  #      - 12.15.0
+  #    before_install:
+  #      - cd Chat.Web/Client/
+  #    install:
+  #      - npm install
+  #    script:
+  #      - npm test
 
-    - stage: Integration_Tests
-      language: csharp
-      mono: none
-      dotnet: 3.1
-      addons:
-        chrome: stable
-      services:
-        - xvfb
-      before_script:
-        - export DISPLAY=:99.0
-      script:
-        - dotnet --version
-        - make start-test
-        - bash Scripts/wait-until-service-is-up.sh
-        - xvfb-run --auto-servernum --server-num=1 --server-args="-screen 0 1024x768x24" dotnet test Chat.Tests.Integration
+  #   - stage: Integration_Tests
+  #     language: csharp
+  #     mono: none
+  #     dotnet: 3.1
+  #     addons:
+  #       chrome: stable
+  #     services:
+  #       - xvfb
+  #     before_script:
+  #       - export DISPLAY=:99.0
+  #     script:
+  #       - dotnet --version
+  #       - make start-test
+  #       - bash Scripts/wait-until-service-is-up.sh
+  #       - xvfb-run --auto-servernum --server-num=1 --server-args="-screen 0 1024x768x24" dotnet test Chat.Tests.Integration
 
     - stage: Deploy
       language: minimal
@@ -60,10 +60,10 @@ jobs:
 stages:
   - name: Build
     if: branch != master AND type != pull_request
-  - name: Unit_Tests
-    if: branch != master AND type != pull_request
-  - name: Integration_Tests
-    if: type = pull_request
+  # - name: Unit_Tests
+  #   if: branch != master AND type != pull_request
+  # - name: Integration_Tests
+  #   if: type = pull_request
   - name: Deploy
     if: branch = master AND type != pull_request
 branches:
