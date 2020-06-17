@@ -11,7 +11,18 @@ jobs:
       script:
         - dotnet build 
 
-    - stage: Test
+    - stage: Unit tests
+      language: node_js
+      node_js:
+        - 12.15.0
+      before_install:
+        - cd Chat.Web/Client/
+      install:
+        - npm install
+      script:
+        - npm test
+
+    - stage: Integration tests
       language: csharp
       mono: none
       dotnet: 3.1
@@ -26,16 +37,6 @@ jobs:
         - make start-test
         - bash Scripts/wait-until-service-is-up.sh
         - xvfb-run --auto-servernum --server-num=1 --server-args="-screen 0 1024x768x24" dotnet test Chat.Tests.Integration
-
-#    - language: node_js
-#      node_js:
-#        - 12.15.0
-#      before_install:
-#        - cd Chat.Web/Client/
-#      install:
-#        - npm install
-#      script:
-#        - npm test
 
     - stage: Deploy
       language: minimal
@@ -59,7 +60,9 @@ jobs:
 stages:
   - name: Build
     if: type != pull_request
-  - name: Test
+  - name: Unit tests
+    if: type != pull_request
+  - name: Integration tests
     if: type = pull_request
   - name: Deploy
     if: branch = master AND type != pull_request
