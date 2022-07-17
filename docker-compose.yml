@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.9'
 
 services:
   web:
@@ -8,18 +8,18 @@ services:
       dockerfile: ./Dockerfile
     ports:
       - 5000:5000
+    expose:
+      - 5000
     environment:
-      - ASPNETCORE_URLS=http://0.0.0.0:5000
+      - ASPNETCORE_URLS=http://0.0.0.0:
     tty: true
     labels:
-        - "traefik.enable=true"
-        - "traefik.port=5000"
-        - "traefik.backend=chat"
-        - "traefik.frontend.rule=PathPrefixStrip:/chat"
-        - "traefik.frontend.redirect.regex=^(.*)/chat$$"
-        - "traefik.frontend.redirect.replacement=$$1/chat/"
-        - "traefik.frontend.rule=PathPrefix:/chat;ReplacePathRegex: ^/chat/(.*) /$$1"
-        - "traefik.docker.network=romashovtech_default"
+        - traefik.enable=true
+        - traefik.http.routers.chat.entrypoints=http-point
+        - traefik.http.routers.chat.rule=PathPrefix(`/chat/`)
+        - traefik.http.middlewares.chat-replacepathregex.replacepathregex.regex=^/chat/(.*)
+        - traefik.http.middlewares.chat-replacepathregex.replacepathregex.replacement=/$$1
+        - traefik.http.routers.chat.middlewares=chat-replacepathregex
   proxy:
     container_name: proxy
     build:
@@ -28,3 +28,4 @@ services:
         - 80:80
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
+        - ./Proxy/traefik.yml:/traefik.yml:ro
