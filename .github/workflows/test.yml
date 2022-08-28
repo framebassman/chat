@@ -47,3 +47,17 @@ jobs:
         working-directory: ./Chat.Web/Client
       - run: npm test
         working-directory: ./Chat.Web/Client
+  build-docker-contatiner:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: false
+          build-args: |
+            SENTRY_RELEASE_BUILDTIME=${{ env.VERSION }}
+          tags: framebassman/chat:${{ env.VERSION }}
