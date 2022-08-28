@@ -58,6 +58,4 @@ jobs:
         with:
           context: .
           push: false
-          build-args: |
-            SENTRY_RELEASE_BUILDTIME=${{ env.VERSION }}
-          tags: framebassman/chat:${{ env.VERSION }}
+          tags: framebassman/chat:latest
