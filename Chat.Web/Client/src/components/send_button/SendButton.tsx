@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Send from '@material-ui/icons/Send';
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 import './SendButton.css';
 
 export const SendButton = (props: any) => {
@@ -10,7 +10,7 @@ export const SendButton = (props: any) => {
   };
   return (
     <Button id="send" className="send-button" onClick={onClick} type={type}>
-      <Send style={iconStyle}/>
+      <SendIcon style={iconStyle}/>
     </Button>
   )
 }
