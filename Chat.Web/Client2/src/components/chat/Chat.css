@@ -1,0 +1,35 @@
+.chat {
+  display: flex;
+  justify-content: center;
+}
+
+.paper {
+  margin: 16px;
+  width: 800px;
+}
+
+.messages {
+  margin: 4px;
+  height: 75vh;
+  overflow-y: scroll;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+  margin: 8px;
+}
+
+.input {
+  width: 700px;
+}
+
+@media (max-width: 800px) {
+  .paper {
+    min-width: 300px;
+  }
+
+  .input {
+    min-width: 250px;
+  }
+}
