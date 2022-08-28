@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0.400-1-alpine3.16-amd64 AS build-env
 
-RUN apk add --update 'nodejs=16.17.0-r0' 'npm=16.17.0-r0'
+RUN apk add --update 'nodejs=16.17.0-r0' 'npm=8.18.0-r1'
 
 COPY ./Chat.Web /app
 WORKDIR /app
