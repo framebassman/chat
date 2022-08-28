@@ -1,6 +1,6 @@
-FROM mcr.microsoft.com/dotnet/sdk:6.0.400-1-alpine3.16-amd64 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1.201-alpine3.11 AS build-env
 
-RUN apk add --update 'nodejs=16.16.0-r0' 'npm=8.10.0-r0'
+RUN apk add --update 'nodejs=12.22.6-r0' 'npm=12.22.6-r0'
 
 COPY ./Chat.Web /app
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0.8-alpine3.16-amd64
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.3-alpine3.11
 WORKDIR /app
 COPY --from=build-env /app/out .
 
