@@ -37,8 +37,8 @@ jobs:
         with:
           context: .
           push: true
-          build-args:
-            - SENTRY_RELEASE_BUILDTIME=${{ env.VERSION }}
+          build-args: |
+            SENTRY_RELEASE_BUILDTIME=${{ env.VERSION }}
           tags: framebassman/chat:${{ env.VERSION }}
 
       - uses: avakar/tag-and-release@v1
