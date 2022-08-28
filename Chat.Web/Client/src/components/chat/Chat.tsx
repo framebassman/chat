@@ -2,9 +2,9 @@ import React from 'react';
 import {Component} from 'react';
 import { ChatState } from './ChatState';
 import { sendMessageCommand, chatHubConnection } from '../../model/SignalR';
-import Paper from '@mui/material/Paper/Paper';
-import Divider from '@mui/material/Divider/Divider';
-import TextField from '@mui/material/TextField/TextField';
+import Paper from '@mui/material/Paper';
+import Divider from '@mui/material/Divider';
+import TextField from '@mui/material/TextField';
 import { SendButton } from '../send_button/SendButton';
 import './Chat.css';
 
