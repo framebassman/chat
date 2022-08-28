@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1.201-alpine3.11 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:6.0.400-1-alpine3.15 AS build-env
 
 RUN apk add --update 'nodejs=16.17.0-r0' 'npm=16.17.0-r0'
 
@@ -8,11 +8,11 @@ WORKDIR /app
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1.3-alpine3.11
+FROM mcr.microsoft.com/dotnet/core/aspnet:6.0.8-alpine3.15
 WORKDIR /app
 COPY --from=build-env /app/out .
 
-ARG SENTRY_RELEASE_BUILDTIME=0.0.1
+ARG SENTRY_RELEASE_BUILDTIME=0.1.0
 ENV SENTRY_RELEASE=$SENTRY_RELEASE_BUILDTIME
 
 ENTRYPOINT dotnet Chat.Web.dll
